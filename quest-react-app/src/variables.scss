@@ -1,0 +1,26 @@
+//color variables
+
+$yellow: #D9A774;
+$grey: #60747C;
+$black: #000000;
+
+//text color variables
+
+$txt_color0: $yellow;
+$txt_color1: $grey;
+
+//border color variables
+
+$brdr_color0: $grey;
+
+//background color variables
+
+$bg_color0: $grey;
+$bg_color1: $black;
+
+@mixin setFont($family, $weight, $size, $lineHeight) {
+  font-family: $family, sans-serif;
+  font-size: $size;
+  line-height: $lineHeight;
+  font-weight: $weight;
+}
