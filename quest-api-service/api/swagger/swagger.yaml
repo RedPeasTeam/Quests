@@ -1,16 +1,15 @@
 swagger: "2.0"
 info:
-  version: "0.0.1"
-  title: Hello World App
+  version: "0.1.0"
+  title: Quest API Service
 # during dev, should point to your local machine
 host: localhost:10010
 # basePath prefixes all resource paths 
-basePath: /
+basePath: /api/v1
 # 
 schemes:
   # tip: remove http to make production-grade
   - http
-  - https
 # format of bodies a client can send (Content-Type)
 consumes:
   - application/json
@@ -18,13 +17,13 @@ consumes:
 produces:
   - application/json
 paths:
-  /hello:
+  /map:
     # binds a127 app logic to a route
-    x-swagger-router-controller: hello_world
+    x-swagger-router-controller: map
     get:
       description: Returns 'Hello' to the caller
       # used as the method name of the controller
-      operationId: hello
+      operationId: map
       parameters:
         - name: name
           in: query
@@ -36,7 +35,7 @@ paths:
           description: Success
           schema:
             # a pointer to a definition
-            $ref: "#/definitions/HelloWorldResponse"
+            $ref: "#/definitions/MapResponse"
         # responses may fall through to errors
         default:
           description: Error
@@ -46,12 +45,22 @@ paths:
     x-swagger-pipe: swagger_raw
 # complex objects have schema definitions
 definitions:
-  HelloWorldResponse:
-    required:
-      - message
-    properties:
-      message:
+  MapResponse:
+    type: array
+    items: 
+      $ref: "#/definitions/Map"
+      
+  Map: 
+    properties: 
+      name: 
         type: string
+      genre: 
+        type: string
+      coorX: 
+        type: string
+      coorY: 
+        type: string  
+      
   ErrorResponse:
     required:
       - message
