@@ -26,7 +26,29 @@ function getReviews(req, res) {
     return dateResult
   }
 
-  
+  for (let i = 0; i < Math.floor(Math.random() * 60); i += 1) {
+    reviewsData.push({
+      name:     '' + faker.name.firstName(),
+      lastName: '' + faker.name.lastName(),
+      image:    '' + faker.image.avatar(),
+      review:   '' + faker.lorem.paragraph(),
+      date:     '' + getDate()
+    });
+  }
+
+  for (let i = 1; i < reviewsData.length; i += 1) {
+    for (let j = 0; j < reviewsData.length - i; j += 1) {
+      const time_1_arr = reviewsData[j].date.split('-');
+      const time_2_arr = reviewsData[j + 1].date.split('-');
+
+      let time1 = +time_1_arr[0] + +time_1_arr[1] * 30 + +time_1_arr[2] * 365;
+      let time2 = +time_2_arr[0] + +time_2_arr[1] * 30 + +time_2_arr[2] * 365;
+
+      if (time1 <= time2) {
+        [reviewsData[j], reviewsData[j + 1]] = [reviewsData[j + 1], reviewsData[j]];
+      }
+    }
+  }
 
   res.json([...reviewsData]);
 }
