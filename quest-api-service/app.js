@@ -17,8 +17,13 @@ SwaggerExpress.create(config, function(err, swaggerExpress) {
   var port = process.env.PORT || 10010;
   app.listen(port);
 
+
+  if (swaggerExpress.runner.swagger.paths['/map']) {
+    console.log('try this:\ncurl http://127.0.0.1:' + port + '/api/v1/map');
+  }
   if (swaggerExpress.runner.swagger.paths['/main']) {
    console.log('curl http://127.0.0.1:' + port + '/api/v1/main');
+ 
   }
   if (swaggerExpress.runner.swagger.paths['/reviews']) {
    console.log('curl http://127.0.0.1:' + port + '/api/v1/reviews');
