@@ -4,6 +4,7 @@ import * as Api from 'typescript-fetch-api'
 
 const api = new Api.DefaultApi()  
 
+
 class QuestLocation extends Component{
 
   constructor(props) {
@@ -25,6 +26,7 @@ class QuestLocation extends Component{
 <div>{element.genre}</div>
 </div>
 )}
+
         </div>
     }
 }
