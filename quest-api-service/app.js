@@ -23,5 +23,8 @@ SwaggerExpress.create(config, function(err, swaggerExpress) {
   if (swaggerExpress.runner.swagger.paths['/reviews']) {
    console.log('curl http://127.0.0.1:' + port + '/api/v1/reviews');
   }
+  if (swaggerExpress.runner.swagger.paths['/map']) {
+    console.log('curl http://127.0.0.1:' + port + '/api/v1/map');
+   }
 
 });
