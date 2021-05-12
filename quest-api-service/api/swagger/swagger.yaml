@@ -121,8 +121,6 @@ paths:
     x-swagger-pipe: swagger_raw
 # complex objects have schema definitions
 definitions:
-<<<<<<< HEAD
-
   MapResponse:
     type: array
     items: 
@@ -177,8 +175,6 @@ definitions:
       definition:
         type: string
         
-
-=======
   GenreResponse:
     type: array
     items:
@@ -196,7 +192,6 @@ definitions:
       description:
         type: string
   
->>>>>>> Dasha
   ErrorResponse:
     required:
       - message
