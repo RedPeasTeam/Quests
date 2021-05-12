@@ -1,0 +1,91 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "Quest API service",
+    "version" : "0.1.0"
+  },
+  "servers" : [ {
+    "url" : "http://localhost:10010/api/v1"
+  } ],
+  "paths" : {
+    "/genre" : {
+      "get" : {
+        "description" : "Returns 'Hello' to the caller",
+        "operationId" : "genre",
+        "parameters" : [ {
+          "name" : "name",
+          "in" : "query",
+          "description" : "The name of the person to whom to say hello",
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/GenreResponse"
+                }
+              }
+            }
+          },
+          "default" : {
+            "description" : "Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "x-swagger-router-controller" : "genre"
+    },
+    "/swagger" : {
+      "x-swagger-pipe" : "swagger_raw"
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "GenreResponse" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/components/schemas/Genre"
+        }
+      },
+      "Genre" : {
+        "type" : "object",
+        "properties" : {
+          "genre" : {
+            "type" : "string"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "image" : {
+            "type" : "string"
+          },
+          "id" : {
+            "type" : "string"
+          },
+          "description" : {
+            "type" : "string"
+          }
+        }
+      },
+      "ErrorResponse" : {
+        "required" : [ "message" ],
+        "type" : "object",
+        "properties" : {
+          "message" : {
+            "type" : "string"
+          }
+        }
+      }
+    }
+  }
+}
