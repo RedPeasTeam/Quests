@@ -1,0 +1,212 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "Quests API service",
+    "version" : "0.1.0"
+  },
+  "servers" : [ {
+    "url" : "http://localhost:10010/api/v1"
+  } ],
+  "paths" : {
+    "/map" : {
+      "get" : {
+        "description" : "Returns some info about map",
+        "operationId" : "map",
+        "parameters" : [ {
+          "name" : "parametres",
+          "in" : "query",
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/MapResponse"
+                }
+              }
+            }
+          },
+          "default" : {
+            "description" : "Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "x-swagger-router-controller" : "map"
+    },
+    "/reviews" : {
+      "get" : {
+        "description" : "Returns some info about review",
+        "operationId" : "reviews",
+        "parameters" : [ {
+          "name" : "parametres",
+          "in" : "query",
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ReviewsResponse"
+                }
+              }
+            }
+          },
+          "default" : {
+            "description" : "Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "x-swagger-router-controller" : "reviews"
+    },
+    "/main" : {
+      "get" : {
+        "description" : "Returns parametres of Quests",
+        "operationId" : "main",
+        "parameters" : [ {
+          "name" : "parametres",
+          "in" : "query",
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/QuestsResponse"
+                }
+              }
+            }
+          },
+          "default" : {
+            "description" : "Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "x-swagger-router-controller" : "main"
+    },
+    "/swagger" : {
+      "x-swagger-pipe" : "swagger_raw"
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "MapResponse" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/components/schemas/Map"
+        }
+      },
+      "Map" : {
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string"
+          },
+          "genre" : {
+            "type" : "string"
+          },
+          "coorX" : {
+            "type" : "string"
+          },
+          "coorY" : {
+            "type" : "string"
+          }
+        }
+      },
+      "ReviewsResponse" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/components/schemas/Reviews"
+        }
+      },
+      "Reviews" : {
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string"
+          },
+          "lastName" : {
+            "type" : "string"
+          },
+          "image" : {
+            "type" : "string"
+          },
+          "review" : {
+            "type" : "string"
+          },
+          "date" : {
+            "type" : "string"
+          }
+        }
+      },
+      "QuestsResponse" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/components/schemas/Quests"
+        }
+      },
+      "Quests" : {
+        "required" : [ "id" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "genre" : {
+            "type" : "string"
+          },
+          "image" : {
+            "type" : "string"
+          },
+          "definition" : {
+            "type" : "string"
+          }
+        }
+      },
+      "ErrorResponse" : {
+        "required" : [ "message" ],
+        "type" : "object",
+        "properties" : {
+          "message" : {
+            "type" : "string"
+          }
+        }
+      }
+    }
+  }
+}
