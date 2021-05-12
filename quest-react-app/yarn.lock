@@ -11559,6 +11559,24 @@
   "resolved" "https://registry.npmjs.org/typedarray/-/typedarray-0.0.6.tgz"
   "version" "0.0.6"
 
+"typescript-fetch-api@file:gen/api":
+  "resolved" "file:gen/api"
+
+"typescript-fsa-reducers@^1.2.2":
+  "integrity" "sha512-IQ2VsIqUvmzVgWNDjxkeOxX97itl/rq+2u82jGsRdzCSFi9OtV4qf1Ec1urvj/eDlPHOaihIL7wMZzLYx9GvFg=="
+  "resolved" "https://registry.npmjs.org/typescript-fsa-reducers/-/typescript-fsa-reducers-1.2.2.tgz"
+  "version" "1.2.2"
+
+"typescript-fsa@*", "typescript-fsa@^3.0.0":
+  "integrity" "sha512-xiXAib35i0QHl/+wMobzPibjAH5TJLDj+qGq5jwVLG9qR4FUswZURBw2qihBm0m06tHoyb3FzpnJs1GRhRwVag=="
+  "resolved" "https://registry.npmjs.org/typescript-fsa/-/typescript-fsa-3.0.0.tgz"
+  "version" "3.0.0"
+
+"typescript@^4.2.4":
+  "integrity" "sha512-V+evlYHZnQkaz8TRBuxTA92yZBPotr5H+WhQ7bD3hZUndx5tGOa1fuCgeSjxAzM1RiN5IzvadIXTVefuuwZCRg=="
+  "resolved" "https://registry.npmjs.org/typescript/-/typescript-4.2.4.tgz"
+  "version" "4.2.4"
+
 "unbox-primitive@^1.0.0":
   "integrity" "sha512-tZU/3NqK3dA5gpE1KtyiJUrEB0lxnGkMFHptJ7q6ewdZ8s12QrODwNbhIJStmJkd1QDXa1NRA8aF2A1zk/Ypyw=="
   "resolved" "https://registry.npmjs.org/unbox-primitive/-/unbox-primitive-1.0.1.tgz"
