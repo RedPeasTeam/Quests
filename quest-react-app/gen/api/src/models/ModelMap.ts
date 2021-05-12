@@ -16,60 +16,53 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface Genre
+ * @interface ModelMap
  */
-export interface Genre {
+export interface ModelMap {
     /**
      * 
      * @type {string}
-     * @memberof Genre
-     */
-    genre?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Genre
+     * @memberof ModelMap
      */
     name?: string;
     /**
      * 
      * @type {string}
-     * @memberof Genre
+     * @memberof ModelMap
      */
-    image?: string;
+    genre?: string;
     /**
      * 
      * @type {string}
-     * @memberof Genre
+     * @memberof ModelMap
      */
-    id?: string;
+    coorX?: string;
     /**
      * 
      * @type {string}
-     * @memberof Genre
+     * @memberof ModelMap
      */
-    description?: string;
+    coorY?: string;
 }
 
-export function GenreFromJSON(json: any): Genre {
-    return GenreFromJSONTyped(json, false);
+export function ModelMapFromJSON(json: any): ModelMap {
+    return ModelMapFromJSONTyped(json, false);
 }
 
-export function GenreFromJSONTyped(json: any, ignoreDiscriminator: boolean): Genre {
+export function ModelMapFromJSONTyped(json: any, ignoreDiscriminator: boolean): ModelMap {
     if ((json === undefined) || (json === null)) {
         return json;
     }
     return {
         
-        'genre': !exists(json, 'genre') ? undefined : json['genre'],
         'name': !exists(json, 'name') ? undefined : json['name'],
-        'image': !exists(json, 'image') ? undefined : json['image'],
-        'id': !exists(json, 'id') ? undefined : json['id'],
-        'description': !exists(json, 'description') ? undefined : json['description'],
+        'genre': !exists(json, 'genre') ? undefined : json['genre'],
+        'coorX': !exists(json, 'coorX') ? undefined : json['coorX'],
+        'coorY': !exists(json, 'coorY') ? undefined : json['coorY'],
     };
 }
 
-export function GenreToJSON(value?: Genre | null): any {
+export function ModelMapToJSON(value?: ModelMap | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -78,11 +71,10 @@ export function GenreToJSON(value?: Genre | null): any {
     }
     return {
         
-        'genre': value.genre,
         'name': value.name,
-        'image': value.image,
-        'id': value.id,
-        'description': value.description,
+        'genre': value.genre,
+        'coorX': value.coorX,
+        'coorY': value.coorY,
     };
 }
 

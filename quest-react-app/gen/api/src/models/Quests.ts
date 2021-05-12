@@ -16,60 +16,60 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface Genre
+ * @interface Quests
  */
-export interface Genre {
+export interface Quests {
     /**
      * 
      * @type {string}
-     * @memberof Genre
+     * @memberof Quests
      */
-    genre?: string;
+    id: string;
     /**
      * 
      * @type {string}
-     * @memberof Genre
+     * @memberof Quests
      */
     name?: string;
     /**
      * 
      * @type {string}
-     * @memberof Genre
+     * @memberof Quests
+     */
+    genre?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Quests
      */
     image?: string;
     /**
      * 
      * @type {string}
-     * @memberof Genre
+     * @memberof Quests
      */
-    id?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Genre
-     */
-    description?: string;
+    definition?: string;
 }
 
-export function GenreFromJSON(json: any): Genre {
-    return GenreFromJSONTyped(json, false);
+export function QuestsFromJSON(json: any): Quests {
+    return QuestsFromJSONTyped(json, false);
 }
 
-export function GenreFromJSONTyped(json: any, ignoreDiscriminator: boolean): Genre {
+export function QuestsFromJSONTyped(json: any, ignoreDiscriminator: boolean): Quests {
     if ((json === undefined) || (json === null)) {
         return json;
     }
     return {
         
-        'genre': !exists(json, 'genre') ? undefined : json['genre'],
+        'id': json['id'],
         'name': !exists(json, 'name') ? undefined : json['name'],
+        'genre': !exists(json, 'genre') ? undefined : json['genre'],
         'image': !exists(json, 'image') ? undefined : json['image'],
-        'id': !exists(json, 'id') ? undefined : json['id'],
-        'description': !exists(json, 'description') ? undefined : json['description'],
+        'definition': !exists(json, 'definition') ? undefined : json['definition'],
     };
 }
 
-export function GenreToJSON(value?: Genre | null): any {
+export function QuestsToJSON(value?: Quests | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -78,11 +78,11 @@ export function GenreToJSON(value?: Genre | null): any {
     }
     return {
         
-        'genre': value.genre,
-        'name': value.name,
-        'image': value.image,
         'id': value.id,
-        'description': value.description,
+        'name': value.name,
+        'genre': value.genre,
+        'image': value.image,
+        'definition': value.definition,
     };
 }
 

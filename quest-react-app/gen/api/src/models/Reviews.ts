@@ -16,60 +16,60 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface Genre
+ * @interface Reviews
  */
-export interface Genre {
+export interface Reviews {
     /**
      * 
      * @type {string}
-     * @memberof Genre
-     */
-    genre?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Genre
+     * @memberof Reviews
      */
     name?: string;
     /**
      * 
      * @type {string}
-     * @memberof Genre
+     * @memberof Reviews
+     */
+    lastName?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Reviews
      */
     image?: string;
     /**
      * 
      * @type {string}
-     * @memberof Genre
+     * @memberof Reviews
      */
-    id?: string;
+    review?: string;
     /**
      * 
      * @type {string}
-     * @memberof Genre
+     * @memberof Reviews
      */
-    description?: string;
+    date?: string;
 }
 
-export function GenreFromJSON(json: any): Genre {
-    return GenreFromJSONTyped(json, false);
+export function ReviewsFromJSON(json: any): Reviews {
+    return ReviewsFromJSONTyped(json, false);
 }
 
-export function GenreFromJSONTyped(json: any, ignoreDiscriminator: boolean): Genre {
+export function ReviewsFromJSONTyped(json: any, ignoreDiscriminator: boolean): Reviews {
     if ((json === undefined) || (json === null)) {
         return json;
     }
     return {
         
-        'genre': !exists(json, 'genre') ? undefined : json['genre'],
         'name': !exists(json, 'name') ? undefined : json['name'],
+        'lastName': !exists(json, 'lastName') ? undefined : json['lastName'],
         'image': !exists(json, 'image') ? undefined : json['image'],
-        'id': !exists(json, 'id') ? undefined : json['id'],
-        'description': !exists(json, 'description') ? undefined : json['description'],
+        'review': !exists(json, 'review') ? undefined : json['review'],
+        'date': !exists(json, 'date') ? undefined : json['date'],
     };
 }
 
-export function GenreToJSON(value?: Genre | null): any {
+export function ReviewsToJSON(value?: Reviews | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -78,11 +78,11 @@ export function GenreToJSON(value?: Genre | null): any {
     }
     return {
         
-        'genre': value.genre,
         'name': value.name,
+        'lastName': value.lastName,
         'image': value.image,
-        'id': value.id,
-        'description': value.description,
+        'review': value.review,
+        'date': value.date,
     };
 }
 
