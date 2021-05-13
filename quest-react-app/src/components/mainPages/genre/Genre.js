@@ -2,21 +2,30 @@ import React, {Component} from "react";
 import QuestItem from "../../helpers/questItem/QuestItem";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import * as Api from 'typescript-fetch-api';
+const api = new Api.DefaultApi();
 
 const genreList = ['Эскейп рум.', 'Экшн игра.', 'Квест-перформанс.', 'Хоррор квест.', 'Морфеус.'];
 const difficulty = ['Легкий', 'Средней сложности', 'Сложные'];
 
 class Genre extends Component {
-    state = {
-        date: null,
-    };
+    constructor(props) {
+        super(props);
+        this.state = { genre: [], date: null };
+        this.handleReload();
+    }
+
+    async handleReload(event) {
+        const response = await api.genre({ date: '' });
+        this.setState({ genre: response });
+    }
 
     handleDateChange = (date) => {
         this.setState({date})
     };
 
     render() {
-        const {date} = this.state;
+        const {date, genre} = this.state;
         return <div className='genre-wrapper'>
             <div className='title'>Подбор квеста</div>
             <div className='description'>
@@ -46,18 +55,11 @@ class Genre extends Component {
                     </div>
                 </div>
                 <div className='quest-gallery'>
-                    <div className='quest-item-wrapper'>
-                        <QuestItem/>
-                    </div>
-                    <div className='quest-item-wrapper'>
-                        <QuestItem/>
-                    </div>
-                    <div className='quest-item-wrapper'>
-                        <QuestItem/>
-                    </div>
-                    <div className='quest-item-wrapper'>
-                        <QuestItem/>
-                    </div>
+                    {genre.map((elem, index) => {
+                        return <div className='quest-item-wrapper' key={index}>
+                            <QuestItem imgSrc={elem.image} questName={elem.name}/>
+                        </div>
+                    })}
                 </div>
             </div>
         </div>
