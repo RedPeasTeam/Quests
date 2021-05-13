@@ -13,7 +13,7 @@
 var util = require('util');
 let faker = require('faker')
 let arr = []
-for(let i = 0; i <=5; i++) {
+for(let i = 0; i <=3; i++) {
   arr.push({
     "id": '' + faker.datatype.number(),
     "name": '' + faker.lorem.word(),
