@@ -1,9 +1,9 @@
+
 import map from '../../../img/map.jpg';
 import React, {Component} from 'react';
 import * as Api from 'typescript-fetch-api'
 
 const api = new Api.DefaultApi()  
-
 
 class QuestLocation extends Component{
 
@@ -28,6 +28,4 @@ class QuestLocation extends Component{
         </div>
     }
 }
-
-
 export default QuestLocation;
