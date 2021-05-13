@@ -21,7 +21,7 @@ class QuestLocation extends Component{
         return <div className='questLocation'> 
         <div className='map'><img src={map}></img></div>
 {this.state.map.map(
-(element) => <div className='map-item' x={coorX} y ={coorY}>
+(element) => <div className='map-item' x={element.coorX} y ={element.coorY}>
 <div>{element.name}</div>
 <div>{element.genre}</div>
 </div>
