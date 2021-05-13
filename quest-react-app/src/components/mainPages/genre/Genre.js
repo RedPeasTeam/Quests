@@ -1,10 +1,22 @@
 import React, {Component} from "react";
 import QuestItem from "../../helpers/questItem/QuestItem";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
-const list = ['Action games', 'Active', 'With actors', 'Historical', 'Terrible', 'Exit the room', 'By movies', 'By video games', 'By books', 'Family', 'For children', 'For a large company', 'For adults', 'For school children', 'For beginners'];
+const genreList = ['Эскейп рум.', 'Экшн игра.', 'Квест-перформанс.', 'Хоррор квест.', 'Морфеус.'];
+const difficulty = ['Легкий', 'Средней сложности', 'Сложные'];
 
 class Genre extends Component {
+    state = {
+        date: null,
+    };
+
+    handleDateChange = (date) => {
+        this.setState({date})
+    };
+
     render() {
+        const {date} = this.state;
         return <div className='genre-wrapper'>
             <div className='title'>Подбор квеста</div>
             <div className='description'>
@@ -12,23 +24,39 @@ class Genre extends Component {
                 что для вас важнее всего?
             </div>
             <div className='results'>
-                <div className='quest-list'>
-                {list.map((value, index) => {
-                    return <span className='list-item' key={index}>{value}</span>
-                })}
+                <div className='quest-block'>
+                    <div className='quest-list genre'>
+                        <div className='quest-title'>Жанры</div>
+                        {genreList.map((value, index) => {
+                            return <span className='list-item' key={index}>{value}</span>
+                        })}
+                    </div>
+                    <div className='quest-list difficulty'>
+                        <div className='quest-title'>Сложность</div>
+                        {difficulty.map((value, index) => {
+                            return <span className='list-item' key={index}>{value}</span>
+                        })}
+                    </div>
+                    <div className='date-block'>
+                        <span>Дата:</span>
+                        <DatePicker
+                            selected={date}
+                            onChange={this.handleDateChange}
+                        />
+                    </div>
                 </div>
                 <div className='quest-gallery'>
                     <div className='quest-item-wrapper'>
-                        <QuestItem />
+                        <QuestItem/>
                     </div>
                     <div className='quest-item-wrapper'>
-                        <QuestItem />
+                        <QuestItem/>
                     </div>
                     <div className='quest-item-wrapper'>
-                        <QuestItem />
+                        <QuestItem/>
                     </div>
                     <div className='quest-item-wrapper'>
-                        <QuestItem />
+                        <QuestItem/>
                     </div>
                 </div>
             </div>
