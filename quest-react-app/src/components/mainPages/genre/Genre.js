@@ -1,10 +1,31 @@
 import React, {Component} from "react";
 import QuestItem from "../../helpers/questItem/QuestItem";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import * as Api from 'typescript-fetch-api';
+const api = new Api.DefaultApi();
 
-const list = ['Action games', 'Active', 'With actors', 'Historical', 'Terrible', 'Exit the room', 'By movies', 'By video games', 'By books', 'Family', 'For children', 'For a large company', 'For adults', 'For school children', 'For beginners'];
+const genreList = ['Эскейп рум.', 'Экшн игра.', 'Квест-перформанс.', 'Хоррор квест.', 'Морфеус.'];
+const difficulty = ['Легкий', 'Средней сложности', 'Сложные'];
 
 class Genre extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { genre: [], date: null };
+        this.handleReload();
+    }
+
+    async handleReload(event) {
+        const response = await api.genre({ date: '' });
+        this.setState({ genre: response });
+    }
+
+    handleDateChange = (date) => {
+        this.setState({date})
+    };
+
     render() {
+        const {date, genre} = this.state;
         return <div className='genre-wrapper'>
             <div className='title'>Подбор квеста</div>
             <div className='description'>
@@ -12,24 +33,33 @@ class Genre extends Component {
                 что для вас важнее всего?
             </div>
             <div className='results'>
-                <div className='quest-list'>
-                {list.map((value, index) => {
-                    return <span className='list-item' key={index}>{value}</span>
-                })}
+                <div className='quest-block'>
+                    <div className='quest-list genre'>
+                        <div className='quest-title'>Жанры</div>
+                        {genreList.map((value, index) => {
+                            return <span className='list-item' key={index}>{value}</span>
+                        })}
+                    </div>
+                    <div className='quest-list difficulty'>
+                        <div className='quest-title'>Сложность</div>
+                        {difficulty.map((value, index) => {
+                            return <span className='list-item' key={index}>{value}</span>
+                        })}
+                    </div>
+                    <div className='date-block'>
+                        <span>Дата:</span>
+                        <DatePicker
+                            selected={date}
+                            onChange={this.handleDateChange}
+                        />
+                    </div>
                 </div>
                 <div className='quest-gallery'>
-                    <div className='quest-item-wrapper'>
-                        <QuestItem />
-                    </div>
-                    <div className='quest-item-wrapper'>
-                        <QuestItem />
-                    </div>
-                    <div className='quest-item-wrapper'>
-                        <QuestItem />
-                    </div>
-                    <div className='quest-item-wrapper'>
-                        <QuestItem />
-                    </div>
+                    {genre.map((elem, index) => {
+                        return <div className='quest-item-wrapper' key={index}>
+                            <QuestItem imgSrc={elem.image} questName={elem.name}/>
+                        </div>
+                    })}
                 </div>
             </div>
         </div>
