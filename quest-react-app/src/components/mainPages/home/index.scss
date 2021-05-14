@@ -7,17 +7,13 @@
    background-size: cover;
    padding-top: 76px;
    h2 {
-      font-weight: normal;
-      font-size: 55px;
-      line-height: 97px;
+      @include setFont('Amiri', 400, 55px, 97px);
       text-align: center;
       color: #FFFFED;
    }
    p {
       max-width: 1476px;
-      font-weight: 400;
-      font-size: 30px;
-      line-height: 53px;
+      @include setFont('Amiri', 400, 30px, 53px);
       text-align: center;
       color: rgba(184, 184, 170, 0.8);
       margin: 76px auto 0px auto;
@@ -27,6 +23,7 @@
    display: flex;
    max-width: 1654px;
    margin: 0 auto;
+   padding: 0 40px 0 40px;
    flex-wrap: wrap;
    padding-bottom: 195px;
    justify-content: space-between;
