@@ -37,17 +37,19 @@ Param 1: a handle to the request object
 Param 2: a handle to the response object
 */
 function getMap(req, res) {
+
     const mapResult = [];
+
     for(let i =0; i<4;i+=1)
     {
         mapResult.push({
             name: '' + faker.name.jobArea(),
             genre: '' + faker.name.jobArea(),
-            coorX: '' + faker.datatype.number({
+            coorX: faker.datatype.number({
                 'min': 10,
                 'max': 80
             }),
-            coorY: '' + faker.datatype.number({
+            coorY: faker.datatype.number({
                 'min': 10,
                 'max': 70
             })
