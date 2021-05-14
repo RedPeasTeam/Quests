@@ -1,20 +1,18 @@
 @import "../../../variables";
 
 .map{
+    width: 95vw;
+    height: 78vh;
     margin-left: auto;
-    margin-right: auto 
+    margin-right: auto;
 }
 
 .map-item {
-    position: absolute;
-    top: attr(y);
-    left: attr(x);
-    color: black;
-    background-color: blanchedalmond;
+    padding: 20px;
+    color: $txt_color3;
+    background-color: $bg_color0;
+    border: 3px solid $brdr_color1;
+    border-radius: 15px;
     width: 200px;
-    height: 50px;
-}
-
-.map {
-    background: attr(map);
+    height: auto;
 }

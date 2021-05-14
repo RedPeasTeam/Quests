@@ -12,6 +12,7 @@ It is a good idea to list the modules that your application depends on in the pa
 */
 var util = require('util');
 const faker = require('faker');
+const { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } = require('constants');
 
 /*
 Once you 'require' a module you can reference the things that it exports. These are defined in module.exports.
@@ -36,23 +37,22 @@ Param 1: a handle to the request object
 Param 2: a handle to the response object
 */
 function getMap(req, res) {
-const mapResult = [];
-for(let i =0; i<6;i+=1)
-{
-mapResult.push(
-{
-name: '' + faker.name.jobArea(),
-genre: '' + faker.name.jobArea(),
-coorX: '' + faker.datatype.number({
-'min': 30,
-'max': 1890
-}),
-coorY: '' + faker.datatype.number({
-'min': 30,
-'max': 900
-})
-}
-);
-}
-res.json([...mapResult]);
+    const mapResult = [];
+    for(let i =0; i<4;i+=1)
+    {
+        mapResult.push({
+            name: '' + faker.name.jobArea(),
+            genre: '' + faker.name.jobArea(),
+            coorX: '' + faker.datatype.number({
+                'min': 10,
+                'max': 80
+            }),
+            coorY: '' + faker.datatype.number({
+                'min': 10,
+                'max': 70
+            })
+        });
+    }
+
+    res.json([...mapResult]);
 }

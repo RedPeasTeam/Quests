@@ -19,23 +19,14 @@ class QuestLocation extends Component{
 }
     render() {
         return <div className='questLocation'> 
-<<<<<<< HEAD
-        <div className='map'><img src={map}></img></div>
-{this.state.map.map(
-(element) => <div className='map-item' x={element.coorX} y ={element.coorY}>
-<div>{element.name}</div>
-<div>{element.genre}</div>
-</div>
-)}
-
-=======
-        <div className='map' image={map}></div>
-          {this.state.map.map(
-            (element) => <div className='map-item' x={element.coorX} y ={element.coorY}>
-            <div>{element.name}</div>
-            <div>{element.genre}</div>
-          </div>)}
->>>>>>> 8f4e59fec8f55a7020b71f83e9ba947383a2fe01
+        <div className='map' style={{background: `url(${map})`}}>
+            {this.state.map.map(
+              (element) => 
+              <div className='map-item' style = {{position:"absolute", top:`${element.coorY}%`, left:`${element.coorX}%`}}>
+              <div>{element.name}</div>
+              <div>{element.genre}</div>
+            </div>)}
+          </div>
         </div>
     }
 }
