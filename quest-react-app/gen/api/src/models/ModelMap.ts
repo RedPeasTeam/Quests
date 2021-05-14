@@ -33,16 +33,16 @@ export interface ModelMap {
     genre?: string;
     /**
      * 
-     * @type {string}
+     * @type {number}
      * @memberof ModelMap
      */
-    coorX?: string;
+    coorX?: number;
     /**
      * 
-     * @type {string}
+     * @type {number}
      * @memberof ModelMap
      */
-    coorY?: string;
+    coorY?: number;
 }
 
 export function ModelMapFromJSON(json: any): ModelMap {

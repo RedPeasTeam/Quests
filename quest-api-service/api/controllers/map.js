@@ -43,11 +43,11 @@ mapResult.push(
 {
 name: '' + faker.name.jobArea(),
 genre: '' + faker.name.jobArea(),
-coorX: '' + faker.datatype.number({
+coorX: faker.datatype.number({
 'min': 30,
 'max': 1890
 }),
-coorY: '' + faker.datatype.number({
+coorY: faker.datatype.number({
 'min': 30,
 'max': 900
 })

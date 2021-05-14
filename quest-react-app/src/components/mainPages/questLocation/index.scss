@@ -1,20 +1,23 @@
 @import "../../../variables";
 
+body {
+    $x: attr('x') !global;
+    $y: attr('y') !global;
+}
+
 .map{
+    width: 100vw;
+    height: 80vh;
     margin-left: auto;
-    margin-right: auto 
+    margin-right: auto;
 }
 
 .map-item {
     position: absolute;
-    top: attr(y);
-    left: attr(x);
+    top: $y;
+    left: $x;
     color: black;
     background-color: blanchedalmond;
     width: 200px;
     height: 50px;
-}
-
-.map {
-    background: attr(map);
 }

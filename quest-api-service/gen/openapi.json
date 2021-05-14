@@ -176,10 +176,10 @@
             "type" : "string"
           },
           "coorX" : {
-            "type" : "string"
+            "type" : "integer"
           },
           "coorY" : {
-            "type" : "string"
+            "type" : "integer"
           }
         }
       },
